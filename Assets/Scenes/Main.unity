@@ -1404,6 +1404,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1266999808}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1285803509 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4571038199811263288, guid: 1ec4038cef8dd3242aaa44b0946eccb0, type: 3}
+  m_PrefabInstance: {fileID: 6072498533252820780}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1285803515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285803509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 976ba2e3855242e5b3783cfa27b0b087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selectedValue: {fileID: 11400000, guid: 42d3dc14e2e4a4d469dd3c9c932b5771, type: 2}
 --- !u!1 &1457473657
 GameObject:
   m_ObjectHideFlags: 0
@@ -3042,8 +3060,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
