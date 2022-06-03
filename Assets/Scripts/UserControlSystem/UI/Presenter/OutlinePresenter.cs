@@ -9,14 +9,14 @@ namespace UserControlSystem.UI.Presenter
         [SerializeField] private SelectableValue _selectedValue;
 
         private Outline _outline;
-
+        
         private void Start()
         {
-            if (!gameObject.TryGetComponent(out _outline))
+            if (!TryGetComponent(out _outline))
             {
                 _outline = gameObject.AddComponent<Outline>();
             }
-
+            
             _selectedValue.OnSelected += OnSelected;
 
             OnSelected(_selectedValue.CurrentValue);
@@ -24,7 +24,14 @@ namespace UserControlSystem.UI.Presenter
 
         private void OnSelected(ISelectable selected)
         {
-            _outline.enabled = selected != null;
+            if (selected == null)
+            {
+                _outline.enabled = false;
+                return;
+            }
+
+            var selectableComponent = (Component)selected;
+            _outline.enabled = selectableComponent.gameObject == gameObject;
         }
     }
 }
