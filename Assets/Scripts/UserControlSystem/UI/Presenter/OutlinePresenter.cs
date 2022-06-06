@@ -8,30 +8,31 @@ namespace UserControlSystem.UI.Presenter
     {
         [SerializeField] private SelectableValue _selectedValue;
 
-        private Outline _outline;
-        
+        private ISelectable _currentObject;
+
         private void Start()
         {
-            if (!TryGetComponent(out _outline))
-            {
-                _outline = gameObject.AddComponent<Outline>();
-            }
-            
             _selectedValue.OnSelected += OnSelected;
-
             OnSelected(_selectedValue.CurrentValue);
         }
 
-        private void OnSelected(ISelectable selected)
+        private void OnSelected(ISelectable selectedObject)
         {
-            if (selected == null)
+            if (selectedObject == _currentObject)
             {
-                _outline.enabled = false;
                 return;
             }
 
-            var selectableComponent = (Component)selected;
-            _outline.enabled = selectableComponent.gameObject == gameObject;
+            if (_currentObject != null)
+            {
+                ((Component)_currentObject).GetComponent<Outline>().enabled = false;
+            }
+
+            if (selectedObject != null)
+            {
+                ((Component)selectedObject).GetComponent<Outline>().enabled = true;
+                _currentObject = selectedObject;
+            }
         }
     }
 }

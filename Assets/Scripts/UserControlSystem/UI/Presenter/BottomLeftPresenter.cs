@@ -18,7 +18,6 @@ namespace UserControlSystem.UI.Presenter
         private void Start()
         {
             _selectedValue.OnSelected += OnSelected;
-
             OnSelected(_selectedValue.CurrentValue);
         }
 

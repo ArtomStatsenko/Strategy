@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2940894011792989120}
   - component: {fileID: 1814920346405644003}
   - component: {fileID: 3197744191743250}
-  - component: {fileID: 7255951758347867277}
   - component: {fileID: 4938404224487514165}
   m_Layer: 0
   m_Name: Unit
@@ -106,7 +105,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5718642040426519706}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
@@ -117,19 +116,6 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &7255951758347867277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5718642040426519706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 976ba2e3855242e5b3783cfa27b0b087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _selectedValue: {fileID: 11400000, guid: 42d3dc14e2e4a4d469dd3c9c932b5771, type: 2}
 --- !u!114 &4938404224487514165
 MonoBehaviour:
   m_ObjectHideFlags: 0
