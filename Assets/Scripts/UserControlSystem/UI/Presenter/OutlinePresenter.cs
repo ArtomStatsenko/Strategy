@@ -31,8 +31,9 @@ namespace UserControlSystem.UI.Presenter
             if (selectedObject != null)
             {
                 ((Component)selectedObject).GetComponent<Outline>().enabled = true;
-                _currentObject = selectedObject;
             }
+            
+            _currentObject = selectedObject;
         }
     }
 }
