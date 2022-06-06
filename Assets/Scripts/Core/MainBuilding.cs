@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Core
 {
-    public class MainBuilding : MonoBehaviour, IUnitProducer, ISelectable
+    public class MainBuilding : CommandExecutorBase<IProduceUnitCommand>, ISelectable
     {
         [SerializeField] private GameObject _unitPrefab;
         [SerializeField] private Transform _unitsParent;
@@ -16,7 +16,7 @@ namespace Core
         public float MaxHealth => _maxHealth;
         public Sprite Icon => _icon;
 
-        public void ProduceUnit()
+        public override void ExecuteSpecificCommand<T>(T command)
         {
             Instantiate(
                 _unitPrefab,
