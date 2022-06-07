@@ -1,7 +1,6 @@
-using Abstractions;
 using UnityEngine;
 
-namespace Core.UnitCommandExecutors
+namespace Abstractions.UnitCommandExecutors
 {
     public class AttackCommandExecutor : CommandExecutorBase<IAttackCommand>
     {
