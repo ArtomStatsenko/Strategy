@@ -8,8 +8,9 @@ namespace UserControlSystem.UI.Model
         order = 0)]
     public class SelectableValue : ScriptableObject
     {
+        public event Action<ISelectable> OnSelected;
+        
         public ISelectable CurrentValue { get; private set; }
-        public Action<ISelectable> OnSelected;
 
         public void SetValue(ISelectable value)
         {

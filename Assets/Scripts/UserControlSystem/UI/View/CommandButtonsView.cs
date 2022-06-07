@@ -9,7 +9,7 @@ namespace UserControlSystem.UI.View
 {
     public class CommandButtonsView : MonoBehaviour
     {
-        public Action<ICommandExecutor> OnClick;
+        public event Action<ICommandExecutor> OnClick;
 
         [SerializeField] private Button _attackButton;
         [SerializeField] private Button _moveButton;
@@ -21,12 +21,14 @@ namespace UserControlSystem.UI.View
 
         private void Start()
         {
-            _buttonsByExecutorType = new Dictionary<Type, Button>();
-            _buttonsByExecutorType.Add(typeof(CommandExecutorBase<IAttackCommand>), _attackButton);
-            _buttonsByExecutorType.Add(typeof(CommandExecutorBase<IMoveCommand>), _moveButton);
-            _buttonsByExecutorType.Add(typeof(CommandExecutorBase<IPatrolCommand>), _patrolButton);
-            _buttonsByExecutorType.Add(typeof(CommandExecutorBase<IStopCommand>), _stopButton);
-            _buttonsByExecutorType.Add(typeof(CommandExecutorBase<IProduceUnitCommand>), _produceUnitButton);
+            _buttonsByExecutorType = new Dictionary<Type, Button>
+            {
+                { typeof(CommandExecutorBase<IAttackCommand>), _attackButton },
+                { typeof(CommandExecutorBase<IMoveCommand>), _moveButton },
+                { typeof(CommandExecutorBase<IPatrolCommand>), _patrolButton },
+                { typeof(CommandExecutorBase<IStopCommand>), _stopButton },
+                { typeof(CommandExecutorBase<IProduceUnitCommand>), _produceUnitButton }
+            };
         }
 
         public void MakeLayout(IEnumerable<ICommandExecutor> commandExecutors)
@@ -41,10 +43,10 @@ namespace UserControlSystem.UI.View
 
         public void Clear()
         {
-            foreach (var kvp in _buttonsByExecutorType)
+            foreach (var buttonTypePair in _buttonsByExecutorType)
             {
-                kvp.Value.onClick.RemoveAllListeners();
-                kvp.Value.gameObject.SetActive(false);
+                buttonTypePair.Value.onClick.RemoveAllListeners();
+                buttonTypePair.Value.gameObject.SetActive(false);
             }
         }
     }

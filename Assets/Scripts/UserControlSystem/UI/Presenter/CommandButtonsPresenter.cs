@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Abstractions;
 using Core.UnitCommandExecutors;
 using UnityEngine;
+using UserControlSystem.Commands;
 using UserControlSystem.UI.Model;
 using UserControlSystem.UI.View;
 using Utils.AssetsInjector;
@@ -19,8 +20,9 @@ namespace UserControlSystem.UI.Presenter
 
         private void Start()
         {
-            _selectable.OnSelected += onSelected;
             onSelected(_selectable.CurrentValue);
+
+            _selectable.OnSelected += onSelected;
             _view.OnClick += onButtonClick;
         }
 
@@ -44,39 +46,38 @@ namespace UserControlSystem.UI.Presenter
 
         private void onButtonClick(ICommandExecutor commandExecutor)
         {
-            var unitProducer = commandExecutor as CommandExecutorBase<IProduceUnitCommand>;
-
-            if (unitProducer != null)
+            var unitProduceCommand = commandExecutor as CommandExecutorBase<IProduceUnitCommand>;
+            if (unitProduceCommand)
             {
-                unitProducer.ExecuteSpecificCommand(_context.Inject(new ProduceUnitCommandHeir()));
+                unitProduceCommand.ExecuteSpecificCommand(_context.Inject(new ProduceUnitCommandHeir()));
                 return;
             }
 
             var attackCommand = commandExecutor as CommandExecutorBase<IAttackCommand>;
-            if (attackCommand != null)
+            if (attackCommand)
             {
-                attackCommand.ExecuteSpecificCommand(gameObject.AddComponent<AttackCommand>());
+                attackCommand.ExecuteSpecificCommand(new AttackCommand());
                 return;
             }
-
+            
             var moveCommand = commandExecutor as CommandExecutorBase<IMoveCommand>;
-            if (moveCommand != null)
+            if (moveCommand)
             {
-                moveCommand.ExecuteSpecificCommand(gameObject.AddComponent<MoveCommand>());
+                moveCommand.ExecuteSpecificCommand(new MoveCommand());
                 return;
             }
-
+            
             var patrolCommand = commandExecutor as CommandExecutorBase<IPatrolCommand>;
-            if (patrolCommand != null)
+            if (patrolCommand)
             {
-                patrolCommand.ExecuteSpecificCommand(gameObject.AddComponent<PatrolCommand>());
+                patrolCommand.ExecuteSpecificCommand(new PatrolCommand());
                 return;
             }
-
+            
             var stopCommand = commandExecutor as CommandExecutorBase<IStopCommand>;
-            if (stopCommand != null)
+            if (stopCommand)
             {
-                stopCommand.ExecuteSpecificCommand(gameObject.AddComponent<StopCommand>());
+                stopCommand.ExecuteSpecificCommand(new StopCommand());
                 return;
             }
 

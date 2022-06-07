@@ -1,25 +1,19 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-[CreateAssetMenu(fileName = nameof(AssetsContext), menuName = "Strategy Game/" + nameof(AssetsContext), order = 0)]
-public class AssetsContext : ScriptableObject
+namespace Utils.AssetsInjector
 {
-    [SerializeField] private Object[] _objects;
-    
-    public Object GetObjectOfType(Type targetType, string targetName = null)
+    [CreateAssetMenu(fileName = nameof(AssetsContext), menuName = "Strategy Game/" + nameof(AssetsContext), order = 0)]
+    public class AssetsContext : ScriptableObject
     {
-        foreach (var obj in _objects)
-        {
-            if (obj.GetType().IsAssignableFrom(targetType))
-            {
-                if (targetName == null || obj.name == targetName)
-                {
-                    return obj;
-                }
-            }
-        }
+        [SerializeField] private Object[] _objects;
 
-        return null;
+        public Object GetObjectOfType(Type targetType, string targetName = null)
+        {
+            return _objects.Where(obj => obj.GetType().IsAssignableFrom(targetType))
+                .FirstOrDefault(obj => targetName == null || obj.name == targetName);
+        }
     }
 }
