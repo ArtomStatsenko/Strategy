@@ -9,22 +9,24 @@ namespace Utils.AssetsInjector
 
         public static T Inject<T>(this AssetsContext context, T target)
         {
-            var targetType = target.GetType().BaseType;
+            var targetType = target.GetType();
 
-            if (targetType == null)
+            while (targetType != null)
             {
-                throw new ApplicationException($"{target.GetType()} have no base type");
-            }
+                var allFields =
+                    targetType.GetFields(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
 
-            var allFields = targetType.GetFields(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
-
-            foreach (var fieldInfo in allFields)
-            {
-                if (fieldInfo.GetCustomAttribute(_attributeType) is InjectAssetAttribute injectAssetAttribute)
+                foreach (var fieldInfo in allFields)
                 {
-                    var objectToInject = context.GetObjectOfType(fieldInfo.FieldType, injectAssetAttribute.AssetName);
-                    fieldInfo.SetValue(target, objectToInject);
+                    if (fieldInfo.GetCustomAttribute(_attributeType) is InjectAssetAttribute injectAssetAttribute)
+                    {
+                        var objectToInject =
+                            context.GetObjectOfType(fieldInfo.FieldType, injectAssetAttribute.AssetName);
+                        fieldInfo.SetValue(target, objectToInject);
+                    }
                 }
+
+                targetType = targetType.BaseType;
             }
 
             return target;
