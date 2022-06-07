@@ -49,5 +49,27 @@ namespace UserControlSystem.UI.View
                 buttonTypePair.Value.gameObject.SetActive(false);
             }
         }
+        
+        public void LockInteractions(ICommandExecutor executor)
+        {
+            UnlockAllInteractions();
+            GetButtonByType(executor.GetType()).GetComponent<Selectable>().interactable = false;
+        }
+
+        public void UnlockAllInteractions() => SetInteractable(true);
+
+        private void SetInteractable(bool value)
+        {
+            _attackButton.GetComponent<Selectable>().interactable = value;
+            _moveButton.GetComponent<Selectable>().interactable = value;
+            _patrolButton.GetComponent<Selectable>().interactable = value;
+            _stopButton.GetComponent<Selectable>().interactable = value;
+            _produceUnitButton.GetComponent<Selectable>().interactable = value;
+        }
+
+        private Button GetButtonByType(Type executorInstanceType)
+        {
+            return _buttonsByExecutorType.First(type => type.Key.IsAssignableFrom(executorInstanceType)).Value;
+        }
     }
 }
