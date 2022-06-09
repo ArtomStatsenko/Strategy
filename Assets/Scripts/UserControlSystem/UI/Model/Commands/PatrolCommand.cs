@@ -1,6 +1,6 @@
 using Abstractions;
 
-namespace UserControlSystem.Commands
+namespace UserControlSystem.UI.Model.Commands
 {
     public class PatrolCommand : IPatrolCommand
     {

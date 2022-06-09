@@ -1,10 +1,10 @@
 using System;
 using Abstractions;
-using UserControlSystem.Commands;
+using UserControlSystem.UI.Model.Commands;
 using Utils.AssetsInjector;
 using Zenject;
 
-namespace UserControlSystem.CommandCreators
+namespace UserControlSystem.UI.Model.CommandCreators
 {
     public class StopCommandCreator : CommandCreatorBase<IStopCommand>
     {

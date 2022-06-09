@@ -1,7 +1,7 @@
 using System;
 using Abstractions;
 
-namespace UserControlSystem.CommandCreators
+namespace UserControlSystem.UI.Model.CommandCreators
 {
     public abstract class CommandCreatorBase<T> where T : ICommand
     {
