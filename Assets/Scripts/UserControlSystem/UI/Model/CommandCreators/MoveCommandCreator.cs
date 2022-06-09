@@ -16,10 +16,10 @@ namespace UserControlSystem.UI.Model.CommandCreators
         [Inject]
         private void Init(Vector3Value groundClicks)
         {
-            groundClicks.OnNewValue += OnNewValue;
+            groundClicks.OnValueChanged += OnValueChanged;
         }
 
-        private void OnNewValue(Vector3 groundClick)
+        private void OnValueChanged(Vector3 groundClick)
         {
             _creationCallback?.Invoke(_context.Inject(new MoveCommand(groundClick)));
             _creationCallback = null;

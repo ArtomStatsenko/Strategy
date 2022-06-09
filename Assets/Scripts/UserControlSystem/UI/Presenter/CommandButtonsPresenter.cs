@@ -18,9 +18,9 @@ namespace UserControlSystem.UI.Presenter
 
         private void Start()
         {
-            OnSelected(_selectable.CurrentValue);
+            OnValueChanged(_selectable.CurrentValue);
 
-            _selectable.OnSelected += OnSelected;
+            _selectable.OnValueChanged += OnValueChanged;
             
             _view.OnClick += _model.OnCommandButtonClicked;
             _model.OnCommandSent += _view.UnlockAllInteractions;
@@ -28,7 +28,7 @@ namespace UserControlSystem.UI.Presenter
             _model.OnCommandAccepted += _view.LockInteractions;
         }
 
-        private void OnSelected(ISelectable selectable)
+        private void OnValueChanged(ISelectable selectable)
         {
             if (_currentSelectable == selectable)
             {

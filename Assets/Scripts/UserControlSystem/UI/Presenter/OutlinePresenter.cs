@@ -12,11 +12,11 @@ namespace UserControlSystem.UI.Presenter
 
         private void Start()
         {
-            _selectedValue.OnSelected += OnSelected;
-            OnSelected(_selectedValue.CurrentValue);
+            _selectedValue.OnValueChanged += OnValueChanged;
+            OnValueChanged(_selectedValue.CurrentValue);
         }
 
-        private void OnSelected(ISelectable selectedObject)
+        private void OnValueChanged(ISelectable selectedObject)
         {
             if (selectedObject == _currentObject)
             {
