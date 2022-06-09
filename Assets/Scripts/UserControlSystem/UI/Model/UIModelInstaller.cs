@@ -1,6 +1,6 @@
 using Abstractions;
 using UnityEngine;
-using UserControlSystem.CommandCreators;
+using UserControlSystem.UI.Model.CommandCreators;
 using Utils.AssetsInjector;
 using Zenject;
 
@@ -9,6 +9,7 @@ namespace UserControlSystem.UI.Model
     public class UIModelInstaller : MonoInstaller
     {
         [SerializeField] private AssetsContext _legacyContext;
+        [SerializeField] private Vector3Value _groundClickRMB;
 
         public override void InstallBindings()
         {
@@ -19,6 +20,7 @@ namespace UserControlSystem.UI.Model
             Container.Bind<CommandCreatorBase<IPatrolCommand>>().To<PatrolCommandCreator>().AsTransient();
             Container.Bind<CommandCreatorBase<IStopCommand>>().To<StopCommandCreator>().AsTransient();
             Container.Bind<CommandButtonsModel>().AsTransient();
+            Container.Bind<Vector3Value>().FromInstance(_groundClickRMB);
         }
     }
 }
