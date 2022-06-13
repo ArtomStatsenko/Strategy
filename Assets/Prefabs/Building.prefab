@@ -109,10 +109,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ca76f51458b4d48a8cab5fca938531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _unitPrefab: {fileID: 5718642040426519706, guid: 7ce09f338f79d544785ff46cd4a176a5, type: 3}
   _unitsParent: {fileID: 0}
   _maxHealth: 1000
   _icon: {fileID: 21300000, guid: ba15468d5b8aa8b4ab627625b7d8ab6c, type: 3}
+  _pivotPoint: {fileID: 1618006618363786746}
 --- !u!114 &1285803514
 MonoBehaviour:
   m_ObjectHideFlags: 0
