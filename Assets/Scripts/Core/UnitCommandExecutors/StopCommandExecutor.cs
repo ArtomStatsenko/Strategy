@@ -1,10 +1,15 @@
+using System.Threading;
 using Abstractions;
-using UnityEngine;
 
 namespace Core.UnitCommandExecutors
 {
     public class StopCommandExecutor : CommandExecutorBase<IStopCommand>
     {
-        public override void ExecuteSpecificCommand(IStopCommand command) => Debug.Log("Stop");
+        public CancellationTokenSource CancellationTokenSource { get; set; }
+        
+        public override void ExecuteSpecificCommand(IStopCommand command)
+        {
+            CancellationTokenSource?.Cancel();
+        }
     }
 }
