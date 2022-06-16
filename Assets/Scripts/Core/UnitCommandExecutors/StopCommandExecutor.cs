@@ -1,6 +1,7 @@
+using Abstractions;
 using UnityEngine;
 
-namespace Abstractions.UnitCommandExecutors
+namespace Core.UnitCommandExecutors
 {
     public class StopCommandExecutor : CommandExecutorBase<IStopCommand>
     {

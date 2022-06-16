@@ -1,6 +1,7 @@
+using Abstractions;
 using UnityEngine;
 
-namespace Abstractions.UnitCommandExecutors
+namespace Core.UnitCommandExecutors
 {
     public class PatrolCommandExecutor : CommandExecutorBase<IPatrolCommand>
     {

@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: ea3fd69937eceac448144b03cd68e23d, type: 2}
 --- !u!1 &166749692
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +291,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &373235987
 Transform:
@@ -1157,10 +1157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca93301483974a079b6847dc01f446f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _legacyContext: {fileID: 11400000, guid: ab2523ec3d6899e4a8f27ba8bb720b4b, type: 2}
-  _groundClickRMB: {fileID: 11400000, guid: 5231b6f6b3d523e4a82f10220c93d53e, type: 2}
-  _selectableValue: {fileID: 11400000, guid: 42d3dc14e2e4a4d469dd3c9c932b5771, type: 2}
-  _attackablesRMB: {fileID: 11400000, guid: d118d52426b514345b03a2cac8235ac5, type: 2}
 --- !u!1 &858758958
 GameObject:
   m_ObjectHideFlags: 0
@@ -1741,7 +1737,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1266999809
 Transform:
@@ -2773,7 +2769,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1624481640
 Transform:
@@ -2990,7 +2986,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!64 &1635030589
 MeshCollider:
