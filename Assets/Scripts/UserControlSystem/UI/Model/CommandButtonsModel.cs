@@ -41,7 +41,7 @@ namespace UserControlSystem.UI.Model
                 command => ExecuteCommandWrapper(commandExecutor, command));
         }
 
-        public void ExecuteCommandWrapper(ICommandExecutor commandExecutor, object command)
+        private void ExecuteCommandWrapper(ICommandExecutor commandExecutor, object command)
         {
             commandExecutor.ExecuteCommand(command);
             _isCommandPending = false;

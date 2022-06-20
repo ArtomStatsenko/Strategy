@@ -1,24 +1,26 @@
+using System;
 using Abstractions;
 using TMPro;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
-using UserControlSystem.UI.Model;
+using Zenject;
 
 namespace UserControlSystem.UI.Presenter
 {
     public class BottomLeftPresenter : MonoBehaviour
     {
-        [SerializeField] private Image _selectedImage;
         [SerializeField] private Slider _healthSlider;
         [SerializeField] private TextMeshProUGUI _text;
+        [SerializeField] private Image _selectedImage;
         [SerializeField] private Image _sliderBackground;
         [SerializeField] private Image _sliderFillImage;
-        [SerializeField] private SelectableValue _selectedValue;
+        
+        [Inject] private IObservable<ISelectable> _selectedValues;
 
         private void Start()
         {
-            _selectedValue.OnValueChanged += OnValueChanged;
-            OnValueChanged(_selectedValue.CurrentValue);
+            _selectedValues.Subscribe(OnValueChanged);
         }
 
         private void OnValueChanged(ISelectable selected)

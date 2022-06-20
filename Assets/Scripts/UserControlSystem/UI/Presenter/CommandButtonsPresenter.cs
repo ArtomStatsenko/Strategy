@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using UniRx;
 using Abstractions;
 using UnityEngine;
 using UserControlSystem.UI.Model;
@@ -9,19 +11,17 @@ namespace UserControlSystem.UI.Presenter
 {
     public class CommandButtonsPresenter : MonoBehaviour
     {
-        [SerializeField] private SelectableValue _selectable;
         [SerializeField] private CommandButtonsView _view;
         
+        [Inject] private IObservable<ISelectable> _selectedValues;
         [Inject] private CommandButtonsModel _model;
 
         private ISelectable _currentSelectable;
 
         private void Start()
         {
-            OnValueChanged(_selectable.CurrentValue);
+            _selectedValues.Subscribe(OnValueChanged);
 
-            _selectable.OnValueChanged += OnValueChanged;
-            
             _view.OnClick += _model.OnCommandButtonClicked;
             _model.OnCommandSent += _view.UnlockAllInteractions;
             _model.OnCommandCancel += _view.UnlockAllInteractions;

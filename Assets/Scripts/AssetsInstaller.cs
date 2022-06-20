@@ -1,3 +1,4 @@
+using System;
 using Abstractions;
 using UnityEngine;
 using UserControlSystem.UI.Model;
@@ -18,5 +19,6 @@ public class AssetsInstaller : ScriptableObjectInstaller<AssetsInstaller>
         Container.BindInstances(_legacyContext, _groundClicksRMB, _attackableClicksRMB, _selectables);
         Container.Bind<IAwaitable<IAttackable>>().FromInstance(_attackableClicksRMB);
         Container.Bind<IAwaitable<Vector3>>().FromInstance(_groundClicksRMB);
+        Container.Bind<IObservable<ISelectable>>().FromInstance(_selectables);
     }
 }
