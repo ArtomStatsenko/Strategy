@@ -1,8 +1,7 @@
 using System;
 using UnityEngine;
-using Utils;
 
-namespace UserControlSystem.UI.Model
+namespace Utils
 {
     public abstract class VariableValue<T> : ScriptableObject, IAwaitable<T>
     {
@@ -27,7 +26,7 @@ namespace UserControlSystem.UI.Model
         
         public T CurrentValue { get; private set; }
 
-        public void SetValue(T value)
+        public virtual void SetValue(T value)
         {
             CurrentValue = value;
             OnValueChanged?.Invoke(value);
