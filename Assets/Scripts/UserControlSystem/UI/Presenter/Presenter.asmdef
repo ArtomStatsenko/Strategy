@@ -1,5 +1,5 @@
 {
-    "name": "UIPresenter",
+    "name": "Presenter",
     "rootNamespace": "",
     "references": [
         "GUID:0f0cf782b21513e42aa8ee2917f82d34",

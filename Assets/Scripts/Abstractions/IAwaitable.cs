@@ -1,4 +1,4 @@
-namespace Utils
+namespace Abstractions
 {
     public interface IAwaitable<T>
     {

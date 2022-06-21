@@ -1,6 +1,6 @@
 using System;
 
-namespace Utils
+namespace Abstractions
 {
     public abstract class AwaiterBase<TAwaited> : IAwaiter<TAwaited>
     {

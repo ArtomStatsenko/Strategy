@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Utils
+namespace Abstractions
 {
     public abstract class VariableValue<T> : ScriptableObject, IAwaitable<T>
     {

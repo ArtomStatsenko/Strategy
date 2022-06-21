@@ -1,16 +1,16 @@
 using System;
 using UniRx;
 
-namespace Utils
+namespace Abstractions
 {
-    public class StatefulVariableValue<T> : VariableValue<T>, IObservable<T>
+    public abstract class StatelessVariableValue<T> : VariableValue<T>, IObservable<T>
     {
-        private ReactiveProperty<T> _innerDataSource = new ReactiveProperty<T>();
+        private Subject<T> _innerDataSource = new Subject<T>();
 
         public override void SetValue(T value)
         {
             base.SetValue(value);
-            _innerDataSource.Value = value;
+            _innerDataSource.OnNext(value);
         }
 
         public IDisposable Subscribe(IObserver<T> observer) => _innerDataSource.Subscribe(observer);

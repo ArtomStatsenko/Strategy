@@ -1,4 +1,4 @@
-namespace UserControlSystem.UI.Model.Commands
+namespace UserControlSystem.CommandsRealization
 {
     public class ProduceUnitCommandHeir : ProduceUnitCommand
     {

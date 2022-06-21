@@ -1,6 +1,6 @@
 using System;
 using Abstractions;
-using UserControlSystem.UI.Model.Commands;
+using UserControlSystem.CommandsRealization;
 using Utils.AssetsInjector;
 using Zenject;
 

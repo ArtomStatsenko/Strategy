@@ -1,6 +1,6 @@
 using System.Runtime.CompilerServices;
 
-namespace Utils
+namespace Abstractions
 {
     public interface IAwaiter<TAwaited> : INotifyCompletion
     {

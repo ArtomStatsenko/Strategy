@@ -2,7 +2,7 @@ using Abstractions;
 using UnityEngine;
 using Utils.AssetsInjector;
 
-namespace UserControlSystem.UI.Model.Commands
+namespace UserControlSystem.CommandsRealization
 {
     public class ProduceUnitCommand : IProduceUnitCommand
     {
