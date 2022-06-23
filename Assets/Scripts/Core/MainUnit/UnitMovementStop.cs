@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Utils;
 
-namespace Core
+namespace Core.MainUnit
 {
     public class UnitMovementStop : MonoBehaviour, IAwaitable<AsyncExtensions.Void>
     {

@@ -1,5 +1,4 @@
 using System;
-using Abstractions;
 using Abstractions.Commands;
 
 namespace UserControlSystem.UI.Model.CommandCreators
@@ -8,9 +7,7 @@ namespace UserControlSystem.UI.Model.CommandCreators
     {
         public ICommandExecutor ProcessCommandExecutor(ICommandExecutor commandExecutor, Action<T> callback)
         {
-            var classSpecificExecutor = commandExecutor as CommandExecutorBase<T>;
-
-            if (classSpecificExecutor)
+            if (commandExecutor is ICommandExecutor<T>)
             {
                 ClassSpecificCommandCreation(callback);
             }
@@ -22,7 +19,6 @@ namespace UserControlSystem.UI.Model.CommandCreators
 
         public virtual void ProcessCancel()
         {
-
         }
     }
 }

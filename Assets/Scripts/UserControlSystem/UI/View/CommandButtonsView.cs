@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Abstractions;
 using Abstractions.Commands;
 using Abstractions.Commands.CommandInterfaces;
 using UnityEngine;
@@ -11,7 +10,7 @@ namespace UserControlSystem.UI.View
 {
     public class CommandButtonsView : MonoBehaviour
     {
-        public event Action<ICommandExecutor> OnClick;
+        public Action<ICommandExecutor, ICommandQueue> OnClick;
 
         [SerializeField] private Button _attackButton;
         [SerializeField] private Button _moveButton;
@@ -25,21 +24,21 @@ namespace UserControlSystem.UI.View
         {
             _buttonsByExecutorType = new Dictionary<Type, Button>
             {
-                { typeof(CommandExecutorBase<IAttackCommand>), _attackButton },
-                { typeof(CommandExecutorBase<IMoveCommand>), _moveButton },
-                { typeof(CommandExecutorBase<IPatrolCommand>), _patrolButton },
-                { typeof(CommandExecutorBase<IStopCommand>), _stopButton },
-                { typeof(CommandExecutorBase<IProduceUnitCommand>), _produceUnitButton }
+                { typeof(ICommandExecutor<IAttackCommand>), _attackButton },
+                { typeof(ICommandExecutor<IMoveCommand>), _moveButton },
+                { typeof(ICommandExecutor<IPatrolCommand>), _patrolButton },
+                { typeof(ICommandExecutor<IStopCommand>), _stopButton },
+                { typeof(ICommandExecutor<IProduceUnitCommand>), _produceUnitButton }
             };
         }
 
-        public void MakeLayout(IEnumerable<ICommandExecutor> commandExecutors)
+        public void MakeLayout(IEnumerable<ICommandExecutor> commandExecutors, ICommandQueue queue)
         {
             foreach (var currentExecutor in commandExecutors)
             {
                 var button = _buttonsByExecutorType.First(type => type.Key.IsInstanceOfType(currentExecutor)).Value;
                 button.gameObject.SetActive(true);
-                button.onClick.AddListener(() => OnClick?.Invoke(currentExecutor));
+                button.onClick.AddListener(() => OnClick?.Invoke(currentExecutor, queue));
             }
         }
 

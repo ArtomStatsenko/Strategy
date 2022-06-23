@@ -1,13 +1,12 @@
-using Abstractions;
-using Abstractions.Commands;
+using System.Threading.Tasks;
 using Abstractions.Commands.CommandInterfaces;
 using UnityEngine;
 
-namespace Core.UnitCommandExecutors
+namespace Core.MainUnit.UnitCommandExecutors
 {
     public class PatrolCommandExecutor : CommandExecutorBase<IPatrolCommand>
     {
-        public override void ExecuteSpecificCommand(IPatrolCommand command) =>
+        public override async Task ExecuteSpecificCommand(IPatrolCommand command) =>
             Debug.Log($"Patrolling from ({command.From}) to ({command.To})");
     }
 }

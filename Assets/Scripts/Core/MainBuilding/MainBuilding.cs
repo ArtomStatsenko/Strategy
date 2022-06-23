@@ -1,7 +1,7 @@
 using Abstractions;
 using UnityEngine;
 
-namespace Core
+namespace Core.MainBuilding
 {
     public class MainBuilding : MonoBehaviour, ISelectable, IAttackable
     {

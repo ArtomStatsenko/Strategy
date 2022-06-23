@@ -1,15 +1,14 @@
 using System.Threading;
-using Abstractions;
-using Abstractions.Commands;
+using System.Threading.Tasks;
 using Abstractions.Commands.CommandInterfaces;
 
-namespace Core.UnitCommandExecutors
+namespace Core.MainUnit.UnitCommandExecutors
 {
     public class StopCommandExecutor : CommandExecutorBase<IStopCommand>
     {
         public CancellationTokenSource CancellationTokenSource { get; set; }
-        
-        public override void ExecuteSpecificCommand(IStopCommand command)
+
+        public override async Task ExecuteSpecificCommand(IStopCommand command)
         {
             CancellationTokenSource?.Cancel();
         }

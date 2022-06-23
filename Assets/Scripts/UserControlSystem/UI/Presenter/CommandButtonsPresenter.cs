@@ -13,7 +13,7 @@ namespace UserControlSystem.UI.Presenter
     public class CommandButtonsPresenter : MonoBehaviour
     {
         [SerializeField] private CommandButtonsView _view;
-        
+
         [Inject] private IObservable<ISelectable> _selectedValues;
         [Inject] private CommandButtonsModel _model;
 
@@ -35,20 +35,22 @@ namespace UserControlSystem.UI.Presenter
             {
                 return;
             }
-            
+
             if (_currentSelectable != null)
             {
                 _model.OnSelectionChanged();
             }
-            
+
             _currentSelectable = selectable;
             _view.Clear();
 
             if (selectable != null)
             {
                 var commandExecutors = new List<ICommandExecutor>();
-                commandExecutors.AddRange(((Component)selectable).GetComponentsInParent<ICommandExecutor>());
-                _view.MakeLayout(commandExecutors);
+                var selectableComponent = (Component)selectable;
+                commandExecutors.AddRange(selectableComponent.GetComponentsInParent<ICommandExecutor>());
+                var queue = selectableComponent.GetComponentInParent<ICommandQueue>();
+                _view.MakeLayout(commandExecutors, queue);
             }
         }
     }
