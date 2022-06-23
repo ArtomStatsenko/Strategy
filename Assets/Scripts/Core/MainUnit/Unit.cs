@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Core.MainUnit
 {
-    public class Unit : MonoBehaviour, ISelectable, IAttackable
+    public class Unit : MonoBehaviour, ISelectable, IAttackable, IUnit
     {
         [SerializeField] private float _maxHealth = 100;
         [SerializeField] private Sprite _icon;
