@@ -1,7 +1,7 @@
 using Abstractions.Commands;
 using Zenject;
 
-namespace Core.MainUnit.UnitCommandExecutors
+namespace Core
 {
     public class CommandExecutorsInstaller : MonoInstaller
     {

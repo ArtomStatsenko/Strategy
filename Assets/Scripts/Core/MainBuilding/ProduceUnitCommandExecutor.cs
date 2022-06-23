@@ -1,12 +1,13 @@
 using System.Threading.Tasks;
 using Abstractions;
+using Abstractions.Commands;
 using Abstractions.Commands.CommandInterfaces;
+using Core.MainUnit;
 using UniRx;
 using UnityEngine;
 using Zenject;
-using Random = UnityEngine.Random;
 
-namespace Core.MainUnit.UnitCommandExecutors
+namespace Core.MainBuilding
 {
     public class ProduceUnitCommandExecutor : CommandExecutorBase<IProduceUnitCommand>, IUnitProducer
     {
@@ -14,7 +15,6 @@ namespace Core.MainUnit.UnitCommandExecutors
 
         [SerializeField] private Transform _unitsParent;
         [SerializeField] private int _maximumUnitsInQueue = 6;
-        [SerializeField] private float _spawnDistance = 5f;
         [Inject] private DiContainer _diContainer;
 
         private ReactiveCollection<IUnitProductionTask> _queue = new ReactiveCollection<IUnitProductionTask>();
@@ -35,9 +35,13 @@ namespace Core.MainUnit.UnitCommandExecutors
             }
 
             RemoveTaskAtIndex(0);
-            _diContainer.InstantiatePrefab(innerTask.UnitPrefab, new Vector3(
-                Random.Range(-_spawnDistance, _spawnDistance), 0,
-                Random.Range(-_spawnDistance, _spawnDistance)), Quaternion.identity, _unitsParent);
+
+            var instance = _diContainer.InstantiatePrefab(
+                innerTask.UnitPrefab, transform.position,
+                Quaternion.identity, _unitsParent);
+            var queue = instance.GetComponent<ICommandQueue>();
+            var mainBuilding = GetComponent<MainBuilding>();
+            queue.EnqueueCommand(new MoveCommand(mainBuilding.RallyPoint));
         }
 
         public void Cancel(int index) => RemoveTaskAtIndex(index);

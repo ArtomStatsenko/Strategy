@@ -8,6 +8,7 @@ namespace Core.MainBuilding
     public class MainBuildingCommandQueue : MonoBehaviour, ICommandQueue
     {
         [Inject] CommandExecutorBase<IProduceUnitCommand> _produceUnitCommandExecutor;
+        [Inject] CommandExecutorBase<ISetRallyPointCommand> _setRallyPointCommandExecutor;
 
         public void Clear()
         {
@@ -16,6 +17,7 @@ namespace Core.MainBuilding
         public async void EnqueueCommand(object command)
         {
             await _produceUnitCommandExecutor.TryExecuteCommand(command);
+            await _setRallyPointCommandExecutor.TryExecuteCommand(command);
         }
     }
 }

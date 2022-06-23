@@ -17,6 +17,7 @@ namespace UserControlSystem.UI.View
         [SerializeField] private Button _patrolButton;
         [SerializeField] private Button _stopButton;
         [SerializeField] private Button _produceUnitButton;
+        [SerializeField] private Button _setRallyPointButton;
 
         private Dictionary<Type, Button> _buttonsByExecutorType;
 
@@ -28,7 +29,8 @@ namespace UserControlSystem.UI.View
                 { typeof(ICommandExecutor<IMoveCommand>), _moveButton },
                 { typeof(ICommandExecutor<IPatrolCommand>), _patrolButton },
                 { typeof(ICommandExecutor<IStopCommand>), _stopButton },
-                { typeof(ICommandExecutor<IProduceUnitCommand>), _produceUnitButton }
+                { typeof(ICommandExecutor<IProduceUnitCommand>), _produceUnitButton },
+                { typeof(ICommandExecutor<ISetRallyPointCommand>), _setRallyPointButton }
             };
         }
 
@@ -66,6 +68,7 @@ namespace UserControlSystem.UI.View
             _patrolButton.GetComponent<Selectable>().interactable = value;
             _stopButton.GetComponent<Selectable>().interactable = value;
             _produceUnitButton.GetComponent<Selectable>().interactable = value;
+            _setRallyPointButton.GetComponent<Selectable>().interactable = value;
         }
 
         private Button GetButtonByType(Type executorInstanceType)

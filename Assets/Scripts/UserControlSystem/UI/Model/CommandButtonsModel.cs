@@ -14,6 +14,7 @@ namespace UserControlSystem.UI.Model
         public event Action OnCommandCancel;
 
         [Inject] private CommandCreatorBase<IProduceUnitCommand> _unitProducer;
+        [Inject] private CommandCreatorBase<ISetRallyPointCommand> _setRallyPointProducer;
         [Inject] private CommandCreatorBase<IAttackCommand> _attacker;
         [Inject] private CommandCreatorBase<IMoveCommand> _mover;
         [Inject] private CommandCreatorBase<IPatrolCommand> _patroller;
@@ -32,6 +33,8 @@ namespace UserControlSystem.UI.Model
             
             OnCommandAccepted?.Invoke(commandExecutor);
             _unitProducer.ProcessCommandExecutor(commandExecutor, command =>
+                ExecuteCommandWrapper(command, commandsQueue));
+            _setRallyPointProducer.ProcessCommandExecutor(commandExecutor, command =>
                 ExecuteCommandWrapper(command, commandsQueue));
             _attacker.ProcessCommandExecutor(commandExecutor, command =>
                 ExecuteCommandWrapper(command, commandsQueue));
@@ -64,6 +67,7 @@ namespace UserControlSystem.UI.Model
         private void ProcessOnCancel()
         {
             _unitProducer.ProcessCancel();
+            _setRallyPointProducer.ProcessCancel();
             _attacker.ProcessCancel();
             _stopper.ProcessCancel();
             _mover.ProcessCancel();
