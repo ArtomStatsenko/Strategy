@@ -1,4 +1,4 @@
-using Abstractions;
+using Abstractions.Commands.CommandInterfaces;
 
 namespace UserControlSystem.CommandsRealization
 {

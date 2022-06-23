@@ -2,7 +2,6 @@ using System;
 using Abstractions;
 using UnityEngine;
 using UserControlSystem.UI.Model;
-using Utils;
 using Utils.AssetsInjector;
 using Zenject;
 
@@ -13,6 +12,9 @@ public class AssetsInstaller : ScriptableObjectInstaller<AssetsInstaller>
     [SerializeField] private Vector3Value _groundClicksRMB;
     [SerializeField] private AttackableValue _attackableClicksRMB;
     [SerializeField] private SelectableValue _selectables;
+    [SerializeField] private Sprite _unitSprite;
+    
+    private const string Unit = "Unit";
 
     public override void InstallBindings()
     {
@@ -20,5 +22,6 @@ public class AssetsInstaller : ScriptableObjectInstaller<AssetsInstaller>
         Container.Bind<IAwaitable<IAttackable>>().FromInstance(_attackableClicksRMB);
         Container.Bind<IAwaitable<Vector3>>().FromInstance(_groundClicksRMB);
         Container.Bind<IObservable<ISelectable>>().FromInstance(_selectables);
+        Container.Bind<Sprite>().WithId(Unit).FromInstance(_unitSprite);
     }
 }

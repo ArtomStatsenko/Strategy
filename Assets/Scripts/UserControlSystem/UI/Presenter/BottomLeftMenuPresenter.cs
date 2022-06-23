@@ -8,7 +8,7 @@ using Zenject;
 
 namespace UserControlSystem.UI.Presenter
 {
-    public class BottomLeftPresenter : MonoBehaviour
+    public class BottomLeftMenuPresenter : MonoBehaviour
     {
         [SerializeField] private Slider _healthSlider;
         [SerializeField] private TextMeshProUGUI _text;

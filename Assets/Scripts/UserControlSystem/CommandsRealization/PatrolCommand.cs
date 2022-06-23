@@ -1,4 +1,4 @@
-using Abstractions;
+using Abstractions.Commands.CommandInterfaces;
 using UnityEngine;
 
 namespace UserControlSystem.CommandsRealization

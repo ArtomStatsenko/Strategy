@@ -51,8 +51,7 @@ namespace UserControlSystem.UI.Presenter
                 }
                 else if (_groundPlane.Raycast(ray, out var enter))
                 {
-                    _groundClicksRMB.SetValue(ray.origin + ray.direction *
-                        enter);
+                    _groundClicksRMB.SetValue(ray.origin + ray.direction * enter);
                 }
             });
         }

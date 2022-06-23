@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Abstractions
+namespace Abstractions.Commands
 {
     public abstract class CommandExecutorBase<T> : MonoBehaviour, ICommandExecutor where T : ICommand
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Abstractions
+namespace Abstractions.Commands.CommandInterfaces
 {
     public interface IPatrolCommand : ICommand
     {

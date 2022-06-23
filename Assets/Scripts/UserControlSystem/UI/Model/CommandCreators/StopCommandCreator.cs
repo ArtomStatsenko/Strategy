@@ -1,5 +1,6 @@
 using System;
 using Abstractions;
+using Abstractions.Commands.CommandInterfaces;
 using UserControlSystem.CommandsRealization;
 using Utils.AssetsInjector;
 using Zenject;
