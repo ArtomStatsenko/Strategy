@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 4902313488736137255}
   - component: {fileID: 5122504207217844841}
   - component: {fileID: 5044257139064571391}
+  - component: {fileID: 6345165378551892525}
   m_Layer: 0
   m_Name: MainBuilding
   m_TagString: Untagged
@@ -166,7 +167,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _unitsParent: {fileID: 0}
   _maximumUnitsInQueue: 6
-  _spawnDistance: 5
 --- !u!114 &8843366825578346729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,3 +221,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2146502e88f74233bd3132330d84c7ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6345165378551892525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4571038199811263288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fb10e02a304434925e0ce7aeba8e1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _factionId: 0
